@@ -1,16 +1,13 @@
 package easy
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import "neekity.com/leetcode/src/common"
 
-func ReverseList(head *ListNode) *ListNode {
+func ReverseList(head *common.ListNode) *common.ListNode {
 	if head == nil {
 		return head
 	}
 	curr := head
-	var prev *ListNode
+	var prev *common.ListNode
 	for curr != nil {
 		next := curr.Next
 		curr.Next = prev
@@ -20,17 +17,17 @@ func ReverseList(head *ListNode) *ListNode {
 	return prev
 }
 
-func MergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
-	dump := &ListNode{-1, nil}
+func MergeTwoLists(list1 *common.ListNode, list2 *common.ListNode) *common.ListNode {
+	dump := &common.ListNode{-1, nil}
 	cur := dump
 	for list1 != nil && list2 != nil {
 		if list1.Val <= list2.Val {
 			cur.Next = list1
-			cur, list1 = list1, cur.Next
+			cur, list1 = list1, list1.Next
 			cur.Next = nil
 		} else if list1.Val > list2.Val {
 			cur.Next = list2
-			cur, list2 = list2, cur.Next
+			cur, list2 = list2, list2.Next
 			cur.Next = nil
 		}
 	}

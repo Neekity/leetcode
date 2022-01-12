@@ -1,7 +1,5 @@
 package hard
 
-import "fmt"
-
 func IsMatch(s string, p string) bool {
 	var lenS, lenP int
 	lenS, lenP = len(s), len(p)
@@ -27,6 +25,5 @@ func IsMatch(s string, p string) bool {
 		}
 	}
 
-	fmt.Println(dp[2][4])
 	return dp[lenS][lenP]
 }

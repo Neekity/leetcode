@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"neekity.com/leetcode/src/middle"
+	"neekity.com/leetcode/src/common"
+	"neekity.com/leetcode/src/hard"
 	"sync"
 	"time"
 )
@@ -39,8 +40,12 @@ func (m *namePrinter) Task() {
 }
 
 func main() {
-	//nums := []int{2, 2, 2, 2}
-	fmt.Println(middle.GenerateParenthesis(1))
+	var lists []*common.ListNode
+	lists = append(lists, common.TransferNodes([]int{1, 4, 5}))
+	lists = append(lists, common.TransferNodes([]int{1, 3, 4}))
+	lists = append(lists, common.TransferNodes([]int{1, 2, 6}))
+
+	fmt.Println(hard.MergeKLists(lists))
 }
 
 func counter(origin chan int) {

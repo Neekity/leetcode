@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"neekity.com/leetcode/src/common"
-	"neekity.com/leetcode/src/hard"
+	"neekity.com/leetcode/src/middle"
 	"sync"
 	"time"
 )
@@ -40,12 +40,13 @@ func (m *namePrinter) Task() {
 }
 
 func main() {
-	var lists []*common.ListNode
-	lists = append(lists, common.TransferNodes([]int{1, 4, 5}))
-	lists = append(lists, common.TransferNodes([]int{1, 3, 4}))
-	lists = append(lists, common.TransferNodes([]int{1, 2, 6}))
+	lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
+	re := middle.SwapPairs(lists1)
+	for re != nil {
+		fmt.Println(re.Val)
+		re = re.Next
+	}
 
-	fmt.Println(hard.MergeKLists(lists))
 }
 
 func counter(origin chan int) {

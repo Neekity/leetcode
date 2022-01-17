@@ -31,7 +31,7 @@ func MergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 func TransferNodes(nums []int) *ListNode {
 	dump := &ListNode{-1, nil}
 	cur := dump
-	for num := range nums {
+	for _, num := range nums {
 		cur.Next = &ListNode{num, nil}
 		cur = cur.Next
 	}

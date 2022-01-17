@@ -67,3 +67,22 @@ func removeNthFromEnd(head *common.ListNode, n int) *common.ListNode {
 	slow.Next = slow.Next.Next
 	return dump.Next
 }
+
+func SwapPairs(head *common.ListNode) *common.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	dump := &common.ListNode{-1, head}
+	var first, second *common.ListNode
+	head = dump
+	for head.Next != nil && head.Next.Next != nil {
+		first = head.Next
+		second = head.Next.Next
+		head.Next = second
+		head = second.Next
+		second.Next = first
+		first.Next = head
+		head = first
+	}
+	return dump.Next
+}

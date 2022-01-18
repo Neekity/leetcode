@@ -54,3 +54,19 @@ func IsValid(s string) bool {
 	}
 	return len(stack) == 0
 }
+
+func RemoveDuplicates(nums []int) int {
+	if len(nums) <= 1 {
+		return len(nums)
+	}
+	pre, cnt := 0, 0
+	for cur := 1; cur < len(nums); cur++ {
+		if nums[pre] == nums[cur] {
+			continue
+		}
+		nums[cnt+1] = nums[cur]
+		pre = cur
+		cnt++
+	}
+	return cnt + 1
+}

@@ -70,3 +70,19 @@ func RemoveDuplicates(nums []int) int {
 	}
 	return cnt + 1
 }
+
+func RemoveElement(nums []int, val int) int {
+	n := len(nums)
+	if n == 0 {
+		return n
+	}
+	pre := 0
+	for cur := 0; cur < n; cur++ {
+		if nums[cur] == val {
+			continue
+		}
+		nums[pre] = nums[cur]
+		pre++
+	}
+	return pre
+}

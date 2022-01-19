@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"math/rand"
 	"neekity.com/leetcode/src/common"
-	"neekity.com/leetcode/src/middle"
 	"sync"
 	"time"
 )
@@ -40,12 +39,10 @@ func (m *namePrinter) Task() {
 }
 
 func main() {
-	lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	re := middle.SwapPairs(lists1)
-	for re != nil {
-		fmt.Println(re.Val)
-		re = re.Next
-	}
+	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
+	s := "mississippi"
+	m := "issip"
+	fmt.Println(common.Kmp(s, m))
 
 }
 

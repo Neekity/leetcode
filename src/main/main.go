@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"neekity.com/leetcode/src/common"
+	"neekity.com/leetcode/src/hard"
 	"sync"
 	"time"
 )
@@ -40,9 +40,8 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	s := "mississippi"
-	m := "issip"
-	fmt.Println(common.Kmp(s, m))
+	//a := []int{1, 1, 5}
+	fmt.Println(hard.LongestValidParentheses(")()())"))
 
 }
 

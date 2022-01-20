@@ -1,6 +1,8 @@
 package hard
 
-import "neekity.com/leetcode/src/common"
+import (
+	"neekity.com/leetcode/src/common"
+)
 
 func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	var res float64
@@ -70,4 +72,44 @@ func findMidNumber(nums1 []int, nums2 []int, l1 int, l2 int, r1 int, r2 int) int
 	}
 
 	return common.Min(nums1[l1], nums2[l2])
+}
+
+func LongestValidParentheses(s string) int {
+	re, left, cnt := 0, 0, 0
+	lenS := len(s)
+
+	for i := 0; i < lenS; i++ {
+		if s[i] == '(' {
+			left++
+		} else {
+			left--
+			if left >= 0 {
+				cnt++
+				if left == 0 && cnt > re {
+					re = cnt
+				}
+			} else {
+				left, cnt = 0, 0
+			}
+		}
+
+	}
+	left, cnt = 0, 0
+	for j := lenS - 1; j >= 0; j-- {
+		if s[j] == ')' {
+			left++
+		} else {
+			left--
+			if left >= 0 {
+				cnt++
+				if left == 0 && cnt > re {
+					re = cnt
+				}
+			} else {
+				left, cnt = 0, 0
+			}
+		}
+	}
+
+	return re * 2
 }

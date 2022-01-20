@@ -108,3 +108,26 @@ func abs(x int) int {
 	}
 	return x
 }
+
+func NextPermutation(nums []int) []int {
+	lenN := len(nums)
+	if lenN <= 1 {
+		return nums
+	}
+	ascFirstIdx, ascSecondIdx, swapIdx := lenN-2, lenN-1, lenN-1
+	for ascFirstIdx >= 0 && nums[ascFirstIdx] >= nums[ascSecondIdx] {
+		ascFirstIdx--
+		ascSecondIdx--
+	}
+	if ascSecondIdx > 0 {
+		for nums[ascFirstIdx] >= nums[swapIdx] {
+			swapIdx--
+		}
+		nums[ascFirstIdx], nums[swapIdx] = nums[swapIdx], nums[ascFirstIdx]
+	}
+
+	for i, j := ascSecondIdx, lenN-1; i < j; i, j = i+1, j-1 {
+		nums[i], nums[j] = nums[j], nums[i]
+	}
+	return nums
+}

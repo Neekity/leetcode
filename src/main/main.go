@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"neekity.com/leetcode/src/hard"
+	"neekity.com/leetcode/src/middle"
 	"sync"
 	"time"
 )
@@ -40,8 +40,9 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	//a := []int{1, 1, 5}
-	fmt.Println(hard.LongestValidParentheses(")()())"))
+	a := []int{5, 7, 7, 8, 8, 10}
+	target := 7
+	fmt.Println(middle.SearchRange(a, target))
 
 }
 

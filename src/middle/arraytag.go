@@ -155,3 +155,41 @@ func Search(nums []int, target int) int {
 	}
 	return -1
 }
+
+func SearchRange(nums []int, target int) []int {
+	result := []int{-1, -1}
+	lenN := len(nums)
+	if lenN == 0 {
+		return result
+	}
+
+	left, right := 0, len(nums)-1
+	//find left bound
+	for left <= right {
+		mid := left + (right-left)/2
+		if target <= nums[mid] {
+			right = mid - 1
+		} else {
+			left = mid + 1
+		}
+
+	}
+	result[0] = left
+
+	//find right bound
+	left, right = 0, len(nums)-1
+	for left <= right {
+		mid := left + (right-left)/2
+		if target < nums[mid] {
+			right = mid - 1
+		} else {
+			left = mid + 1
+		}
+
+	}
+	result[1] = right
+	if result[0] > result[1] {
+		result = []int{-1, -1}
+	}
+	return result
+}

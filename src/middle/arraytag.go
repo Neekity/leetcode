@@ -193,3 +193,22 @@ func SearchRange(nums []int, target int) []int {
 	}
 	return result
 }
+
+func IsValidSudoku(board [][]byte) bool {
+	var row, col, box [9][9]int
+	for i := 0; i < 9; i++ {
+		for j := 0; j < 9; j++ {
+			if board[i][j] == '.' {
+				continue
+			}
+			curNumber := board[i][j] - '1'
+			row[i][curNumber]++
+			col[j][curNumber]++
+			box[j/3+(i/3)*3][curNumber]++
+			if row[i][curNumber] > 1 || col[j][curNumber] > 1 || box[j/3+(i/3)*3][curNumber] > 1 {
+				return false
+			}
+		}
+	}
+	return true
+}

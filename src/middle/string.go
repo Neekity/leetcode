@@ -148,3 +148,22 @@ func helpGenerateParenthesis(left int, right int, n int, tmp string) {
 		helpGenerateParenthesis(left, right+1, n, tmp+")")
 	}
 }
+
+func CountAndSay(n int) string {
+	result := "1"
+
+	for count := 1; count < n; count++ {
+		tmp := ""
+		prePos := 0
+		lenS := len(result)
+		for i := 1; i < lenS; i++ {
+			if result[i] != result[prePos] {
+				tmp = fmt.Sprintf("%s%d%c", tmp, i-prePos, result[prePos])
+				prePos = i
+			}
+		}
+		tmp = fmt.Sprintf("%s%d%c", tmp, lenS-prePos, result[prePos])
+		result = tmp
+	}
+	return result
+}

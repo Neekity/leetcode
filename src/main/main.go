@@ -40,9 +40,7 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	a := []int{5, 7, 7, 8, 8, 10}
-	target := 7
-	fmt.Println(middle.SearchRange(a, target))
+	fmt.Println(middle.CountAndSay(5))
 
 }
 

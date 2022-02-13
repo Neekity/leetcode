@@ -113,3 +113,7 @@ func LongestValidParentheses(s string) int {
 
 	return re * 2
 }
+
+func SolveSudoku(board [][]byte) {
+
+}

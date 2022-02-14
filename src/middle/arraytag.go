@@ -232,3 +232,26 @@ func CombinationSum(candidates []int, target int) (result [][]int) {
 	dfs(0, target)
 	return
 }
+func CombinationSum2(candidates []int, target int) (result [][]int) {
+	var dfs func(begin int, target int)
+	var curPath []int
+	sort.Ints(candidates)
+	dfs = func(begin int, target int) {
+		if target == 0 {
+			result = append(result, append([]int{}, curPath...))
+		}
+		if target < 0 {
+			return
+		}
+		for i := begin; i < len(candidates); i++ {
+			if i > begin && candidates[i-1] == candidates[i] {
+				continue
+			}
+			curPath = append(curPath, candidates[i])
+			dfs(i+1, target-candidates[i])
+			curPath = curPath[:len(curPath)-1]
+		}
+	}
+	dfs(0, target)
+	return
+}

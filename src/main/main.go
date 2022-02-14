@@ -40,7 +40,7 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	fmt.Println(middle.CombinationSum([]int{2, 3, 6, 7}, 7))
+	fmt.Println(middle.CombinationSum2([]int{10, 1, 2, 7, 6, 1, 5}, 8))
 
 }
 

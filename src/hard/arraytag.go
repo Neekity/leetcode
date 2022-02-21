@@ -181,3 +181,30 @@ func Trap2(height []int) int {
 
 	return res
 }
+
+func IsMatch2(s string, p string) bool {
+	lenS, lenP := len(s), len(p)
+	dp := make([][]bool, lenS+1)
+	for i := 0; i <= lenS; i++ {
+		dp[i] = make([]bool, lenP+1)
+	}
+	dp[0][0] = true
+	for j := 1; j <= lenP; j++ {
+		if p[j-1] == '*' {
+			dp[0][j] = true
+		} else {
+			break
+		}
+	}
+	for i := 0; i < lenS; i++ {
+		for j := 0; j < lenP; j++ {
+			if p[j] == '?' || p[j] == s[i] {
+				dp[i+1][j+1] = dp[i][j]
+			} else if p[j] == '*' {
+				dp[i+1][j+1] = dp[i+1][j] || dp[i][j+1]
+			}
+		}
+	}
+
+	return dp[lenS][lenP]
+}

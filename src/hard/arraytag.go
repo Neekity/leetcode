@@ -145,3 +145,39 @@ func FirstMissingPositive(nums []int) int {
 	}
 	return lenN + 1
 }
+
+func Trap(height []int) int {
+	n := len(height)
+	leftMax := make([]int, n)
+	rightMax := height[n-1]
+	leftMax[0] = height[0]
+
+	for i := 1; i < n; i++ {
+		leftMax[i] = common.Max(leftMax[i-1], height[i])
+	}
+	result := common.Min(leftMax[n-1], rightMax) - height[n-1]
+	for i := n - 2; i >= 0; i-- {
+		rightMax = common.Max(rightMax, height[i])
+		result += common.Min(leftMax[i], rightMax) - height[i]
+	}
+
+	return result
+}
+
+func Trap2(height []int) int {
+	n := len(height)
+	left, right, leftMax, rightMax, res := 0, n-1, 0, 0, 0
+	for left < right {
+		leftMax = common.Max(height[left], leftMax)
+		rightMax = common.Max(height[right], rightMax)
+		if height[left] < height[right] {
+			res += leftMax - height[left]
+			left++
+		} else {
+			res += rightMax - height[right]
+			right--
+		}
+	}
+
+	return res
+}

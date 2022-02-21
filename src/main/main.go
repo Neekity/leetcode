@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"neekity.com/leetcode/src/middle"
+	"neekity.com/leetcode/src/hard"
 	"sync"
 	"time"
 )
@@ -40,7 +40,7 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	fmt.Println(middle.CombinationSum2([]int{10, 1, 2, 7, 6, 1, 5}, 8))
+	fmt.Println(hard.Trap2([]int{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}))
 
 }
 

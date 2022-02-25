@@ -291,3 +291,33 @@ func Permute(nums []int) (result [][]int) {
 	help([]int{})
 	return
 }
+func PermuteUnique(nums []int) (result [][]int) {
+	n := len(nums)
+	helpPos := make([]bool, n)
+	var help func(tmp []int)
+	help = func(tmp []int) {
+		if len(tmp) == n {
+			result = append(result, append([]int{}, tmp...))
+			return
+		}
+
+		for i := 0; i < n; i++ {
+			flag := true
+			for j := i; j >= 0; j-- {
+				if helpPos[i] == false && helpPos[j] == false && j != i && nums[i] == nums[j] {
+					flag = false
+					break
+				}
+			}
+			if helpPos[i] == false && flag {
+				tmp = append(tmp, nums[i])
+				helpPos[i] = true
+				help(tmp)
+				tmp = tmp[:len(tmp)-1]
+				helpPos[i] = false
+			}
+		}
+	}
+	help([]int{})
+	return
+}

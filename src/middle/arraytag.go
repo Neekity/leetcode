@@ -2,6 +2,7 @@ package middle
 
 import (
 	"math"
+	"neekity.com/leetcode/src/common"
 	"sort"
 )
 
@@ -254,4 +255,16 @@ func CombinationSum2(candidates []int, target int) (result [][]int) {
 	}
 	dfs(0, target)
 	return
+}
+
+func Jump(nums []int) int {
+	maxPos, n, steps, right := 0, len(nums), 0, 0
+	for i := 0; i < n-1; i++ {
+		maxPos = common.Max(maxPos, i+nums[i])
+		if i == right {
+			right = maxPos
+			steps++
+		}
+	}
+	return steps
 }

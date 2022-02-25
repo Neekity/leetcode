@@ -40,7 +40,7 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	fmt.Println(middle.Jump([]int{2, 3, 1, 1, 4}))
+	fmt.Println(middle.Permute([]int{1, 2, 3}))
 
 }
 

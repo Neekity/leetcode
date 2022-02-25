@@ -268,3 +268,26 @@ func Jump(nums []int) int {
 	}
 	return steps
 }
+
+func Permute(nums []int) (result [][]int) {
+	n := len(nums)
+	helpPos := make([]bool, n)
+	var help func(tmp []int)
+	help = func(tmp []int) {
+		if len(tmp) == n {
+			result = append(result, append([]int{}, tmp...))
+			return
+		}
+		for i := 0; i < n; i++ {
+			if helpPos[i] == false {
+				tmp = append(tmp, nums[i])
+				helpPos[i] = true
+				help(tmp)
+				tmp = tmp[:len(tmp)-1]
+				helpPos[i] = false
+			}
+		}
+	}
+	help([]int{})
+	return
+}

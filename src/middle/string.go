@@ -167,3 +167,18 @@ func CountAndSay(n int) string {
 	}
 	return result
 }
+
+func GroupAnagrams(strs []string) (result [][]string) {
+	dict := make(map[[26]int][]string)
+	for _, s := range strs {
+		var cnt [26]int
+		for _, c := range s {
+			cnt[c-97] += 1
+		}
+		dict[cnt] = append(dict[cnt], s)
+	}
+	for _, item := range dict {
+		result = append(result, item)
+	}
+	return
+}

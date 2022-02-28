@@ -1,6 +1,7 @@
 package middle
 
 import (
+	"fmt"
 	"math"
 	"neekity.com/leetcode/src/common"
 	"sort"
@@ -320,4 +321,20 @@ func PermuteUnique(nums []int) (result [][]int) {
 	}
 	help([]int{})
 	return
+}
+
+func Rotate(matrix [][]int) {
+	fmt.Println(matrix)
+	n := len(matrix)
+	for i := 0; i < n/2; i++ {
+		for j := 0; j < n; j++ {
+			matrix[n-i-1][j], matrix[i][j] = matrix[i][j], matrix[n-i-1][j]
+		}
+	}
+	for i := 0; i < n; i++ {
+		for j := 0; j < i; j++ {
+			matrix[j][i], matrix[i][j] = matrix[i][j], matrix[j][i]
+		}
+	}
+	fmt.Println(matrix)
 }

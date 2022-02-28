@@ -259,3 +259,53 @@ func SolveNQueens(n int) (res [][]string) {
 	help(0, nil)
 	return
 }
+
+func TotalNQueens(n int) int {
+	var help func(row int, tmp []string)
+	var check func(row int, num int) bool
+	var abs func(a int) int
+	var generate func(pos int) string
+	board := make([]int, n)
+	var res [][]string
+	generate = func(pos int) string {
+		template := ""
+		for i := 0; i < n; i++ {
+			if i == pos {
+				template += "Q"
+			} else {
+				template += "."
+			}
+
+		}
+		return template
+	}
+	abs = func(a int) int {
+		if a <= 0 {
+			return -a
+		}
+		return a
+	}
+	check = func(row int, num int) bool {
+		for i := 0; i < row; i++ {
+			if board[i] == num || abs(num-board[i]) == abs(i-row) {
+				return false
+			}
+		}
+		return true
+	}
+	help = func(row int, tmp []string) {
+		if row == n {
+			fmt.Println(board)
+			res = append(res, tmp)
+			return
+		}
+		for i := 0; i < n; i++ {
+			if check(row, i) {
+				board[row] = i
+				help(row+1, append(tmp, generate(i)))
+			}
+		}
+	}
+	help(0, nil)
+	return len(res)
+}

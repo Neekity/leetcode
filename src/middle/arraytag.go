@@ -372,3 +372,20 @@ func SpiralOrder(matrix [][]int) []int {
 	}
 	return res
 }
+
+func CanJump(nums []int) bool {
+	n := len(nums)
+	maxPos := nums[0]
+	for i := 1; i < n; i++ {
+		if i > maxPos {
+			return false
+		}
+		if nums[i]+i > maxPos {
+			maxPos = nums[i] + i
+		}
+		if maxPos >= n-1 {
+			return true
+		}
+	}
+	return maxPos >= n-1
+}

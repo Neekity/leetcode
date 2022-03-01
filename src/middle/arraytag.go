@@ -418,3 +418,31 @@ func Merge(intervals [][]int) (res [][]int) {
 	res = append(res, []int{left, rightBound})
 	return
 }
+
+func Insert(intervals [][]int, newInterval []int) (res [][]int) {
+	left, right := newInterval[0], newInterval[1]
+	shouldMerge := true
+	for _, item := range intervals {
+		if right < item[0] {
+			if shouldMerge {
+				res = append(res, []int{left, right})
+				shouldMerge = !shouldMerge
+			}
+			res = append(res, item)
+		} else if left > item[1] {
+			res = append(res, item)
+		} else {
+			if item[0] < left {
+				left = item[0]
+			}
+			if right < item[1] {
+				right = item[1]
+			}
+		}
+
+	}
+	if shouldMerge {
+		res = append(res, []int{left, right})
+	}
+	return
+}

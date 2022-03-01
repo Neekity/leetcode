@@ -389,3 +389,32 @@ func CanJump(nums []int) bool {
 	}
 	return maxPos >= n-1
 }
+func Merge(intervals [][]int) (res [][]int) {
+	pos := make([]int, 10001)
+	for i := 0; i < 10001; i++ {
+		pos[i] = -1
+	}
+	left, right, rightBound := -1, -1, 0
+	for _, item := range intervals {
+		if item[1] > pos[item[0]] {
+			pos[item[0]] = item[1]
+		}
+		if item[1] > rightBound {
+			rightBound = item[1]
+		}
+	}
+	for i := 0; i <= rightBound; i++ {
+		if right != -1 && i > right {
+			res = append(res, []int{left, right})
+			left, right = -1, -1
+		}
+		if pos[i] > right {
+			right = pos[i]
+		}
+		if pos[i] != -1 && left == -1 {
+			left = i
+		}
+	}
+	res = append(res, []int{left, rightBound})
+	return
+}

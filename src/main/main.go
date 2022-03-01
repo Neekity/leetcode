@@ -40,7 +40,9 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	fmt.Println(middle.SpiralOrder([][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}))
+	fmt.Println(middle.Merge([][]int{{1, 4}, {0, 0}}))
+	fmt.Println(middle.Merge([][]int{{1, 4}, {0, 0}}))
+	fmt.Println(middle.Merge([][]int{{1, 3}, {2, 6}, {8, 10}}))
 }
 
 func counter(origin chan int) {

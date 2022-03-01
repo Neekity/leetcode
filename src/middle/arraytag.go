@@ -338,3 +338,37 @@ func Rotate(matrix [][]int) {
 	}
 	fmt.Println(matrix)
 }
+
+func SpiralOrder(matrix [][]int) []int {
+	if len(matrix) == 0 || len(matrix[0]) == 0 {
+		return nil
+	}
+	rows, columns := len(matrix), len(matrix[0])
+	res := make([]int, rows*columns)
+	left, right, top, bottom, idx := 0, columns-1, 0, rows-1, 0
+	for left <= right && top <= bottom {
+		for column := left; column < right; column++ {
+			res[idx] = matrix[top][column]
+			idx++
+		}
+		for row := top; row <= bottom; row++ {
+			res[idx] = matrix[row][right]
+			idx++
+		}
+		if left < right && top < bottom {
+			for column := right - 1; column > left; column-- {
+				res[idx] = matrix[bottom][column]
+				idx++
+			}
+			for row := bottom; row > top; row-- {
+				res[idx] = matrix[row][left]
+				idx++
+			}
+		}
+		left++
+		right--
+		top++
+		bottom--
+	}
+	return res
+}

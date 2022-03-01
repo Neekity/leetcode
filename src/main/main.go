@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"neekity.com/leetcode/src/hard"
+	"neekity.com/leetcode/src/middle"
 	"sync"
 	"time"
 )
@@ -40,7 +40,7 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	fmt.Println(hard.SolveNQueens(7))
+	fmt.Println(middle.SpiralOrder([][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}))
 }
 
 func counter(origin chan int) {

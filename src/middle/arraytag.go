@@ -446,3 +446,35 @@ func Insert(intervals [][]int, newInterval []int) (res [][]int) {
 	}
 	return
 }
+
+func GenerateMatrix(n int) [][]int {
+	res := make([][]int, n)
+	for i := 0; i < n; i++ {
+		res[i] = make([]int, n)
+	}
+	cnt, left, right, top, bottom := 0, 0, n-1, 0, n-1
+	for cnt < n*n {
+		for column := left; column <= right; column++ {
+			res[top][column] = cnt + 1
+			cnt++
+		}
+		for row := top + 1; row <= bottom; row++ {
+			res[row][right] = cnt + 1
+			cnt++
+		}
+
+		for column := right - 1; column >= left; column-- {
+			res[bottom][column] = cnt + 1
+			cnt++
+		}
+		for row := bottom - 1; row > top; row-- {
+			res[row][left] = cnt + 1
+			cnt++
+		}
+		left++
+		right--
+		bottom--
+		top++
+	}
+	return res
+}

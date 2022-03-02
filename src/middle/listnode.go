@@ -86,3 +86,32 @@ func SwapPairs(head *common.ListNode) *common.ListNode {
 	}
 	return dump.Next
 }
+
+func RotateRight(head *common.ListNode, k int) *common.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	dump := &common.ListNode{Val: -1}
+	cnt := 0
+	first := head
+	for first != nil {
+		cnt++
+		first = first.Next
+	}
+	first = head
+	k = k % cnt
+	if k == 0 {
+		return head
+	}
+	for i := 0; i < cnt-k-1; i++ {
+		first = first.Next
+	}
+	dump.Next = first.Next
+	tail := first.Next
+	first.Next = nil
+	for tail != nil && tail.Next != nil {
+		tail = tail.Next
+	}
+	tail.Next = head
+	return dump.Next
+}

@@ -3,6 +3,7 @@ package middle
 import (
 	"fmt"
 	"math"
+	"math/big"
 	"neekity.com/leetcode/src/common"
 	"sort"
 )
@@ -477,4 +478,8 @@ func GenerateMatrix(n int) [][]int {
 		top++
 	}
 	return res
+}
+
+func UniquePaths(m, n int) int {
+	return int(new(big.Int).Binomial(int64(m+n-2), int64(n-1)).Int64())
 }

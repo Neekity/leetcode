@@ -40,7 +40,7 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	fmt.Println(middle.GenerateMatrix(3))
+	fmt.Println(middle.UniquePathsWithObstacles([][]int{{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}))
 }
 
 func counter(origin chan int) {

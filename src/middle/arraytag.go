@@ -483,3 +483,23 @@ func GenerateMatrix(n int) [][]int {
 func UniquePaths(m, n int) int {
 	return int(new(big.Int).Binomial(int64(m+n-2), int64(n-1)).Int64())
 }
+func UniquePathsWithObstacles(obstacleGrid [][]int) int {
+	m, n := len(obstacleGrid), len(obstacleGrid[0])
+	res := make([][]int, m+1)
+	for i := 0; i <= m; i++ {
+		res[i] = make([]int, n+1)
+	}
+	for i := 1; i <= m; i++ {
+		for j := 1; j <= n; j++ {
+			if i == 1 && j == 1 && obstacleGrid[0][0] != 1 {
+				res[i][j] = 1
+				continue
+			}
+			res[i][j] = res[i][j-1] + res[i-1][j]
+			if obstacleGrid[i-1][j-1] == 1 {
+				res[i][j] = 0
+			}
+		}
+	}
+	return res[m][n]
+}

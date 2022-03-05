@@ -503,3 +503,28 @@ func UniquePathsWithObstacles(obstacleGrid [][]int) int {
 	}
 	return res[m][n]
 }
+func MinPathSum(grid [][]int) int {
+	m, n := len(grid), len(grid[0])
+	res := make([][]int, m)
+	for i := 0; i < m; i++ {
+		res[i] = make([]int, n)
+	}
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			if i == 0 {
+				if j == 0 {
+					res[i][j] = grid[0][0]
+				} else {
+					res[i][j] = res[i][j-1] + grid[i][j]
+				}
+
+			} else if j == 0 {
+				res[i][j] = res[i-1][j] + grid[i][j]
+			} else {
+				res[i][j] = common.Min(res[i][j-1], res[i-1][j]) + grid[i][j]
+			}
+
+		}
+	}
+	return res[m-1][n-1]
+}

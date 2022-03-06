@@ -142,3 +142,20 @@ func MaxSubArray(nums []int) int {
 	fmt.Println(nums)
 	return res
 }
+
+func PlusOne(digits []int) []int {
+	n := len(digits)
+	flag := 1
+	for i := n - 1; i >= 0; i-- {
+		tmp := digits[i] + flag
+		flag = tmp / 10
+		digits[i] = tmp % 10
+		if flag == 0 {
+			break
+		}
+	}
+	if flag == 1 {
+		return append([]int{1}, digits...)
+	}
+	return digits
+}

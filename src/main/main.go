@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"neekity.com/leetcode/src/easy"
+	"neekity.com/leetcode/src/hard"
 	"sync"
 	"time"
 )
@@ -40,7 +40,10 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	fmt.Println(easy.AddBinary("11", "1"))
+	for _, s := range hard.FullJustify([]string{"ask", "not", "what", "your", "country", "can", "do", "for", "you", "ask", "what", "you", "can", "do", "for", "your", "country"}, 16) {
+		fmt.Println(s)
+	}
+
 }
 
 func counter(origin chan int) {

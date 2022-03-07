@@ -16,3 +16,17 @@ func Reverse(x int32) int {
 	}
 	return int(res)
 }
+func ClimbStairs(n int) int {
+	if n == 1 {
+		return 1
+	}
+	if n == 2 {
+		return 2
+	}
+	preOne := 1
+	preTwo := 2
+	for i := 2; i < n; i++ {
+		preOne, preTwo = preTwo, preOne+preTwo
+	}
+	return preTwo
+}

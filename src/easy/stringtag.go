@@ -1,5 +1,10 @@
 package easy
 
+import (
+	"fmt"
+	"strings"
+)
+
 func StrStr(haystack string, needle string) int {
 	if needle == "" {
 		return 0
@@ -38,4 +43,35 @@ func StrStr(haystack string, needle string) int {
 		return hi - ni
 	}
 	return -1
+}
+func AddBinary(a string, b string) string {
+	i, j := len(a), len(b)
+	if i < j {
+		return AddBinary(b, a)
+	}
+	res := make([]string, i+1)
+
+	var tmp, flag uint8
+	j--
+	i--
+	for j >= 0 {
+		tmp = (a[i] - '0') + (b[j] - '0') + flag
+		flag = tmp / 2
+		res[i+1] = fmt.Sprintf("%d", tmp%2)
+		i--
+		j--
+	}
+	for i >= 0 {
+		tmp = (a[i] - '0') + flag
+		flag = tmp / 2
+		res[i+1] = fmt.Sprintf("%d", tmp%2)
+		i--
+		j--
+	}
+	res[0] = fmt.Sprintf("%d", flag)
+
+	if res[0] == "1" {
+		return strings.Join(res, "")
+	}
+	return strings.Join(res[1:], "")
 }

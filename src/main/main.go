@@ -40,7 +40,7 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	fmt.Println(easy.PlusOne([]int{9, 9, 9}))
+	fmt.Println(easy.AddBinary("11", "1"))
 }
 
 func counter(origin chan int) {

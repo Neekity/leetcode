@@ -528,3 +528,28 @@ func MinPathSum(grid [][]int) int {
 	}
 	return res[m-1][n-1]
 }
+
+func SetZeroes(matrix [][]int) {
+	m, n := len(matrix), len(matrix[0])
+	flag := false
+	for i := 0; i < m; i++ {
+		if matrix[i][0] == 0 {
+			flag = true
+		}
+		for j := 1; j < n; j++ {
+			if matrix[i][j] == 0 {
+				matrix[i][0], matrix[0][j] = 0, 0
+			}
+		}
+	}
+	for i := m - 1; i >= 0; i-- {
+		for j := n - 1; j > 0; j-- {
+			if matrix[i][0] == 0 || matrix[0][j] == 0 {
+				matrix[i][j] = 0
+			}
+		}
+		if flag {
+			matrix[i][0] = 0
+		}
+	}
+}

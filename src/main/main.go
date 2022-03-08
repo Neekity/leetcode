@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"neekity.com/leetcode/src/hard"
+	"neekity.com/leetcode/src/middle"
 	"sync"
 	"time"
 )
@@ -41,7 +41,7 @@ func (m *namePrinter) Task() {
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
 
-	fmt.Println(hard.MinDistance("horse", "ros"))
+	middle.SetZeroes([][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}})
 
 }
 

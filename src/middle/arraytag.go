@@ -568,3 +568,19 @@ func SearchMatrix(matrix [][]int, target int) bool {
 	}
 	return false
 }
+
+func SortColors(nums []int) {
+	l, r := 0, len(nums)-1
+	for i := 0; i <= r; i++ {
+		for i <= r && nums[i] == 2 {
+			nums[i], nums[r] = nums[r], nums[i]
+			r--
+		}
+		if nums[i] == 0 {
+			nums[i], nums[l] = nums[l], nums[i]
+			l++
+		}
+
+	}
+	fmt.Println(nums)
+}

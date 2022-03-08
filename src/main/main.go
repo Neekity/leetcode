@@ -41,7 +41,7 @@ func (m *namePrinter) Task() {
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
 
-	middle.SetZeroes([][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}})
+	middle.SortColors([]int{2, 0, 2, 1, 2, 0})
 
 }
 

@@ -40,9 +40,8 @@ func (m *namePrinter) Task() {
 
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
-	for _, s := range hard.FullJustify([]string{"ask", "not", "what", "your", "country", "can", "do", "for", "you", "ask", "what", "you", "can", "do", "for", "your", "country"}, 16) {
-		fmt.Println(s)
-	}
+
+	fmt.Printf(hard.MinWindow("a", "a"))
 
 }
 

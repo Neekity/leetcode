@@ -528,3 +528,59 @@ func MinPathSum(grid [][]int) int {
 	}
 	return res[m-1][n-1]
 }
+
+func SetZeroes(matrix [][]int) {
+	m, n := len(matrix), len(matrix[0])
+	flag := false
+	for i := 0; i < m; i++ {
+		if matrix[i][0] == 0 {
+			flag = true
+		}
+		for j := 1; j < n; j++ {
+			if matrix[i][j] == 0 {
+				matrix[i][0], matrix[0][j] = 0, 0
+			}
+		}
+	}
+	for i := m - 1; i >= 0; i-- {
+		for j := n - 1; j > 0; j-- {
+			if matrix[i][0] == 0 || matrix[0][j] == 0 {
+				matrix[i][j] = 0
+			}
+		}
+		if flag {
+			matrix[i][0] = 0
+		}
+	}
+}
+
+func SearchMatrix(matrix [][]int, target int) bool {
+	m, n := len(matrix), len(matrix[0])
+	i, j := 0, n-1
+	for i < m && j >= 0 {
+		if matrix[i][j] == target {
+			return true
+		} else if matrix[i][j] > target {
+			j--
+		} else {
+			i++
+		}
+	}
+	return false
+}
+
+func SortColors(nums []int) {
+	l, r := 0, len(nums)-1
+	for i := 0; i <= r; i++ {
+		for i <= r && nums[i] == 2 {
+			nums[i], nums[r] = nums[r], nums[i]
+			r--
+		}
+		if nums[i] == 0 {
+			nums[i], nums[l] = nums[l], nums[i]
+			l++
+		}
+
+	}
+	fmt.Println(nums)
+}

@@ -333,3 +333,37 @@ func MinDistance(word1 string, word2 string) int {
 	}
 	return dp[m][n]
 }
+
+func MinWindow(s string, t string) string {
+	var help [128]int
+	n := len(s)
+	resL, resR := -1, n
+	var cover func(input [128]int) bool
+	cover = func(input [128]int) bool {
+		for _, n := range input {
+			if n > 0 {
+				return false
+			}
+		}
+		return true
+	}
+	for _, c := range t {
+		help[c-'A']++
+	}
+	l, r := 0, 0
+	for r < n {
+		help[s[r]-'A']--
+		for cover(help) {
+			help[s[l]-'A']++
+			if (resR - resL) > (r - l) {
+				resL, resR = l, r
+			}
+			l++
+		}
+		r++
+	}
+	if resL == -1 {
+		return ""
+	}
+	return s[resL : resR+1]
+}

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"neekity.com/leetcode/src/middle"
+	"neekity.com/leetcode/src/hard"
 	"sync"
 	"time"
 )
@@ -41,7 +41,7 @@ func (m *namePrinter) Task() {
 func main() {
 	//lists1 := common.TransferNodes([]int{1, 2, 3, 4, 5})
 
-	middle.SortColors([]int{2, 0, 2, 1, 2, 0})
+	fmt.Printf(hard.MinWindow("a", "a"))
 
 }
 
